@@ -1,0 +1,198 @@
+/* ============================================================
+   Governo AI — Estilos globais
+   ============================================================ */
+
+:root {
+  --bg: #FAFAF7;
+  --bg-card: #FFFFFF;
+  --border: #E5E5E0;
+  --border-strong: #D4D4CC;
+  --text: #1A1A1A;
+  --text-muted: #6B6B6B;
+  --text-faint: #999994;
+  --accent: #8B0000;
+  --accent-soft: #F5E8E8;
+  --gold: #C9A227;
+  --gray: #6B6B6B;
+  --serif: 'Newsreader', Georgia, serif;
+  --sans: 'Inter', -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ============ NAVEGAÇÃO ============ */
+
+nav {
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.25rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.logo-mark {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  transition: color 0.2s;
+  position: relative;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--text);
+}
+
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1.5rem;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+}
+
+/* ============ FOOTER ============ */
+
+footer {
+  border-top: 1px solid var(--border);
+  background: #F2F2EE;
+  padding: 3rem 2rem;
+  margin-top: 4rem;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 4rem;
+}
+
+.footer-about {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 400px;
+}
+
+.footer-about strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.footer-col h4 {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-faint);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col li {
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.footer-col a {
+  color: var(--text);
+  transition: color 0.2s;
+}
+
+.footer-col a:hover {
+  color: var(--accent);
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 3rem auto 0;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ============ MOBILE ============ */
+
+@media (max-width: 768px) {
+  .nav-inner { padding: 1rem; }
+  .nav-links { gap: 1rem; font-size: 0.8rem; }
+  .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+}

@@ -1,0 +1,590 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Os prompts completos vivem em src/content/agentes/*.md (ver patch instructions)
+// Esta página importa-os e mostra-os colapsáveis.
+
+import psdPrompt from '../content/agentes/psd.md?raw';
+import chegaPrompt from '../content/agentes/chega.md?raw';
+import psPrompt from '../content/agentes/ps.md?raw';
+import ilPrompt from '../content/agentes/il.md?raw';
+import livrePrompt from '../content/agentes/livre.md?raw';
+import pcpPrompt from '../content/agentes/pcp.md?raw';
+import bePrompt from '../content/agentes/be.md?raw';
+import panPrompt from '../content/agentes/pan.md?raw';
+import moderadorPrompt from '../content/agentes/moderador.md?raw';
+
+const agentes = [
+  {
+    sigla: 'PSD',
+    nome: 'Partido Social Democrata',
+    deputados: 91,
+    deputados_nota: 'em coligação AD com CDS-PP',
+    posicao: 'Centro-direita reformista. Lidera o atual Governo (coligação AD).',
+    linhas: [
+      'Aumentos significativos de impostos sobre rendimentos ou empresas',
+      'Acordos formais ou geometria estável com PCP ou BE',
+      'Reversão de privatizações estruturais',
+      'Saída ou enfraquecimento do compromisso atlântico ou europeu',
+    ],
+    eleitorado: 'Classe média, profissionais liberais, empresários, quadros, funcionalismo de carreira, eleitorado urbano de centro-direita.',
+    prompt: psdPrompt,
+  },
+  {
+    sigla: 'Chega',
+    nome: 'Chega',
+    deputados: 60,
+    posicao: 'Direita populista, nacionalista e anti-sistema. Segunda maior bancada parlamentar.',
+    linhas: [
+      'Aumentos de impostos sobre rendimentos do trabalho',
+      'Regularização extraordinária de imigrantes em situação irregular',
+      'Alargamento de direitos em matérias identitárias',
+      'Acordos que mantenham "o sistema" intocado',
+      'Reduções em pensões de reformados',
+    ],
+    eleitorado: 'Eleitorado de protesto, classes populares e médias-baixas, zonas do interior, jovens homens desencantados, ex-eleitores PSD e PS.',
+    prompt: chegaPrompt,
+  },
+  {
+    sigla: 'PS',
+    nome: 'Partido Socialista',
+    deputados: 58,
+    posicao: 'Centro-esquerda social-democrata, europeísta. Terceira força parlamentar (primeira vez na história).',
+    linhas: [
+      'Privatização do SNS, Escola Pública ou Segurança Social',
+      'Retrocessos em direitos civis conquistados',
+      'Coligações ou acordos parlamentares com o Chega',
+      'Saída ou enfraquecimento estrutural da UE',
+      'Cortes generalizados em prestações sociais',
+    ],
+    eleitorado: 'Classe média urbana, funcionalismo público, reformados, profissionais liberais progressistas, eleitorado idoso fiel ao legado de Abril.',
+    prompt: psPrompt,
+  },
+  {
+    sigla: 'IL',
+    nome: 'Iniciativa Liberal',
+    deputados: 9,
+    posicao: 'Liberalismo económico, social e político. Reformista, distinta do centro-direita tradicional.',
+    linhas: [
+      'Aumentos da carga fiscal',
+      'Acordos formais ou geometria estável com PCP, BE ou Livre',
+      'Reforço estrutural do Estado em economia',
+      'Cedências em direitos individuais para apaziguar conservadorismo',
+    ],
+    eleitorado: 'Profissionais qualificados urbanos, empresários, jovens com formação superior, quadros técnicos, eleitorado de centro-direita desencantado com PSD.',
+    prompt: ilPrompt,
+  },
+  {
+    sigla: 'Livre',
+    nome: 'Livre',
+    deputados: 6,
+    posicao: 'Esquerda ecologista, europeísta e pós-materialista. Em crescimento.',
+    linhas: [
+      'Retrocessos em direitos civis e LGBTQ+',
+      'Atrasos significativos em metas climáticas',
+      'Acordos com Chega em qualquer matéria',
+      'Restrições graves ao direito à habitação',
+      'Anti-europeísmo',
+    ],
+    eleitorado: 'Jovens qualificados urbanos, profissionais progressistas, ativistas climáticos, comunidade LGBTQ+, eleitorado pós-materialista.',
+    prompt: livrePrompt,
+  },
+  {
+    sigla: 'PCP',
+    nome: 'Partido Comunista Português',
+    deputados: 3,
+    deputados_nota: 'na coligação CDU',
+    posicao: 'Esquerda marxista, soberanista, ancorada no movimento operário e na Constituição de Abril.',
+    linhas: [
+      'Privatizações de setores estratégicos',
+      'Cortes em pensões ou direitos laborais',
+      'Cedências à NATO em política externa',
+      'Acordos parlamentares estáveis com PSD ou Chega',
+    ],
+    eleitorado: 'Operariado tradicional, reformados, agricultores e pescadores, funcionários públicos da base, concentrado em Setúbal, Évora, Beja, Alentejo litoral.',
+    prompt: pcpPrompt,
+  },
+  {
+    sigla: 'BE',
+    nome: 'Bloco de Esquerda',
+    deputados: 1,
+    deputados_nota: 'pior resultado de sempre em legislativas',
+    posicao: 'Esquerda radical democrática, libertária e europeia. Mariana Mortágua é a deputada única (em substituição temporária por Andreia Galvão desde set/2025).',
+    linhas: [
+      'Privatizações do Estado social',
+      'Cedências em direitos civis ou identitários',
+      'Acordos com Chega em qualquer matéria',
+      'Restrições à imigração baseadas em segurança ou identidade',
+      'Reformas laborais que aumentem precariedade',
+    ],
+    eleitorado: 'Trabalhadores precários, jovens qualificados, mulheres feministas, comunidade LGBTQ+, imigrantes, ativistas climáticos, urbanos progressistas.',
+    prompt: bePrompt,
+  },
+  {
+    sigla: 'PAN',
+    nome: 'Pessoas-Animais-Natureza',
+    deputados: 1,
+    posicao: 'Ecologismo e direitos dos animais. Perfil transversal — coopera com esquerda ou centro conforme tema.',
+    linhas: [
+      'Retrocessos em direitos dos animais',
+      'Cortes em proteção ambiental ou conservação',
+      'Acordos com Chega em qualquer matéria',
+      'Cedências em direitos civis para apaziguar conservadorismo',
+    ],
+    eleitorado: 'Eleitorado urbano progressista com sensibilidade animal e ambiental, jovens, mulheres, profissionais da saúde e educação.',
+    prompt: panPrompt,
+  },
+];
+
+const naoRepresentados = [
+  {
+    sigla: 'CDS-PP',
+    deputados: 2,
+    nota: 'Em coligação AD com PSD. Vota em bloco; não tem agente próprio nesta simulação. Os 2 deputados estão contabilizados nos 91 da AD.',
+  },
+  {
+    sigla: 'JPP',
+    deputados: 1,
+    nota: 'Juntos Pelo Povo, partido madeirense. Estreia parlamentar em 2025. Sem programa nacional articulado para sustentar agente próprio. O moderador menciona-o quando relevante para a aritmética ou em temas regionais.',
+  },
+];
+---
+
+<Base title="Agentes — Governo AI" activePage="agentes">
+  <section class="page-header-wrap">
+    <div class="page-header">
+      <div class="page-tag">Quem participa</div>
+      <h1>Os agentes</h1>
+      <p class="page-intro">Cada agente representa um partido com base no programa eleitoral, declarações públicas, linhas vermelhas e estilo retórico. Os prompts-base são públicos — qualquer pessoa pode julgar se a representação é justa.</p>
+    </div>
+  </section>
+
+  <section class="agents-list">
+    {agentes.map(agente => (
+      <article class="agent-card">
+        <header class="agent-header">
+          <div class="agent-identity">
+            <div class="agent-sigla">{agente.sigla}</div>
+            <div>
+              <h2 class="agent-nome">{agente.nome}</h2>
+              <p class="agent-deputados">
+                {agente.deputados} {agente.deputados === 1 ? 'deputado' : 'deputados'}
+                {agente.deputados_nota && <span class="dep-nota"> · {agente.deputados_nota}</span>}
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <p class="agent-posicao">{agente.posicao}</p>
+
+        <div class="agent-grid">
+          <div class="agent-section">
+            <h4>Linhas vermelhas</h4>
+            <ul>
+              {agente.linhas.map(l => <li>{l}</li>)}
+            </ul>
+          </div>
+          <div class="agent-section">
+            <h4>Eleitorado</h4>
+            <p class="agent-eleitorado">{agente.eleitorado}</p>
+          </div>
+        </div>
+
+        <details class="prompt-toggle">
+          <summary>
+            <span class="toggle-label">Ver prompt-base completo</span>
+            <span class="toggle-meta">o ficheiro markdown que define este agente</span>
+          </summary>
+          <pre class="prompt-content">{agente.prompt}</pre>
+        </details>
+      </article>
+    ))}
+  </section>
+
+  <section class="moderator-section">
+    <div class="section-header">
+      <div class="section-tag">+ moderador</div>
+      <h2>O moderador</h2>
+      <p>Não representa nenhum partido. Conduz o debate, força clareza, identifica geometrias parlamentares viáveis e produz o relatório final com três cenários.</p>
+    </div>
+
+    <details class="prompt-toggle prompt-toggle-mod">
+      <summary>
+        <span class="toggle-label">Ver prompt-base do moderador</span>
+        <span class="toggle-meta">aritmética parlamentar, modos de intervenção, princípios</span>
+      </summary>
+      <pre class="prompt-content">{moderadorPrompt}</pre>
+    </details>
+  </section>
+
+  <section class="non-represented">
+    <div class="section-header">
+      <div class="section-tag">Sem agente próprio</div>
+      <h2>Outros partidos parlamentares</h2>
+      <p>A representação parlamentar atual inclui partidos que, por razões editoriais explicadas em cada caso, não têm agente próprio nesta simulação. O moderador menciona-os quando relevante para a aritmética ou para o tema.</p>
+    </div>
+
+    <div class="non-represented-grid">
+      {naoRepresentados.map(p => (
+        <div class="non-rep-card">
+          <div class="non-rep-header">
+            <span class="non-rep-sigla">{p.sigla}</span>
+            <span class="non-rep-deputados">{p.deputados} {p.deputados === 1 ? 'deputado' : 'deputados'}</span>
+          </div>
+          <p class="non-rep-nota">{p.nota}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="metodologia-note">
+    <p>
+      <strong>Sobre estes prompts:</strong> são ficheiros markdown versionados em
+      <a href="https://github.com" target="_blank" rel="noopener">repositório público</a>.
+      Cada alteração é registada e datada. Se discordas de alguma representação, escreve para
+      <a href="mailto:contacto@governoai.pt">contacto@governoai.pt</a> com argumentos concretos —
+      este é um exercício colaborativo de fidelidade política.
+    </p>
+  </section>
+</Base>
+
+<style>
+.page-header-wrap { border-bottom: 1px solid var(--border); }
+
+.page-header {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.page-tag {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.page-header h1 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.page-intro {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  font-style: italic;
+  max-width: 720px;
+  line-height: 1.55;
+}
+
+.agents-list {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.agent-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 2.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+}
+
+.agent-header {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.agent-identity {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.agent-sigla {
+  font-family: var(--mono);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  background: #F2F2EE;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 2px;
+  color: var(--text);
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+.agent-nome {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.25rem;
+}
+
+.agent-deputados {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+.dep-nota {
+  color: var(--text-muted);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.75rem;
+}
+
+.agent-posicao {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  line-height: 1.55;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.agent-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.agent-section h4 {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-faint);
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.agent-section ul {
+  list-style: none;
+}
+
+.agent-section li {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text);
+  padding: 0.4rem 0;
+  border-bottom: 1px dotted var(--border);
+}
+
+.agent-section li:last-child { border-bottom: none; }
+
+.agent-eleitorado {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Prompt collapsible */
+.prompt-toggle {
+  border-top: 1px dotted var(--border);
+  padding-top: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.prompt-toggle summary {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.75rem 1rem;
+  background: #FCFCF9;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  font-family: var(--sans);
+  list-style: none;
+  transition: background 0.2s;
+  position: relative;
+}
+
+.prompt-toggle summary::-webkit-details-marker { display: none; }
+
+.prompt-toggle summary::after {
+  content: '+';
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+.prompt-toggle[open] summary::after { content: '−'; }
+
+.prompt-toggle summary:hover { background: #F5F5EE; }
+
+.toggle-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.toggle-meta {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+}
+
+.prompt-content {
+  background: #FCFCF9;
+  border: 1px solid var(--border);
+  border-top: none;
+  padding: 2rem;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-x: auto;
+  border-radius: 0 0 2px 2px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+/* Moderator section */
+.moderator-section {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.section-header {
+  margin-bottom: 1.5rem;
+  padding: 2rem 0 1.5rem;
+  border-top: 2px solid var(--accent);
+}
+
+.section-tag {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.section-header h2 {
+  font-family: var(--serif);
+  font-size: 1.75rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.75rem;
+}
+
+.section-header p {
+  font-family: var(--serif);
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  max-width: 700px;
+}
+
+.prompt-toggle-mod {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+/* Non-represented */
+.non-represented {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.non-represented-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.non-rep-card {
+  background: #FCFCF9;
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  border-radius: 2px;
+}
+
+.non-rep-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px dotted var(--border);
+}
+
+.non-rep-sigla {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.non-rep-deputados {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.non-rep-nota {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.metodologia-note {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 2rem 4rem;
+  font-family: var(--serif);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.metodologia-note a {
+  color: var(--accent);
+  text-decoration: underline;
+  font-style: normal;
+}
+
+@media (max-width: 768px) {
+  .agent-card { padding: 1.5rem; }
+  .agent-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .non-represented-grid { grid-template-columns: 1fr; }
+  .agent-identity { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+}
+</style>

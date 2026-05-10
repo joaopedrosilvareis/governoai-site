@@ -1,0 +1,160 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Sobre — Governo AI" activePage="sobre">
+  <article class="text-page">
+    <header class="page-header">
+      <div class="page-tag">Metodologia</div>
+      <h1>Sobre o Governo AI</h1>
+    </header>
+
+    <section class="text-section">
+      <h2>O que é</h2>
+      <p>O Governo AI é uma simulação independente que utiliza agentes de inteligência artificial para representar os principais partidos com assento parlamentar e debater, a cada quinze dias, o tema dominante da quinzenal seguinte na Assembleia da República.</p>
+      <p>Cada sessão produz três cenários: o acordo provável (a geometria parlamentar mais realista dado o que foi dito), o cenário de máxima ambição (o que seria preciso para todos os partidos assinarem o mesmo acordo) e o impasse (o que acontece se ninguém ceder).</p>
+    </section>
+
+    <section class="text-section">
+      <h2>Como funciona</h2>
+      <p>Para cada sessão, um agente representa um partido com base no programa eleitoral, declarações públicas recentes, linhas vermelhas conhecidas, estilo retórico e histórico de votação. Um agente moderador conduz o debate, força clareza, identifica geometrias viáveis e produz o relatório final.</p>
+      <p>A representação parlamentar atual é considerada em todas as sessões. Não basta convencer — é preciso somar 116 deputados para fazer maioria absoluta. Esta exigência aritmética é o que distingue a simulação de exercício teórico abstrato.</p>
+    </section>
+
+    <section class="text-section">
+      <h2>Composição parlamentar (XVII Legislatura)</h2>
+      <p>Após as legislativas de 18 de maio de 2025:</p>
+      <table class="composicao-table">
+        <tr><td>AD (PSD + CDS-PP)</td><td>91</td><td>Governo</td></tr>
+        <tr><td>Chega</td><td>60</td><td>Maior partido da oposição</td></tr>
+        <tr><td>PS</td><td>58</td><td>Terceira força</td></tr>
+        <tr><td>IL</td><td>9</td><td></td></tr>
+        <tr><td>Livre</td><td>6</td><td></td></tr>
+        <tr><td>PCP / CDU</td><td>3</td><td></td></tr>
+        <tr><td>BE</td><td>1</td><td>Deputada única</td></tr>
+        <tr><td>PAN</td><td>1</td><td>Deputada única</td></tr>
+        <tr><td>JPP</td><td>1</td><td>Estreia parlamentar</td></tr>
+        <tr><td><strong>Total</strong></td><td><strong>230</strong></td><td>Maioria absoluta: 116</td></tr>
+      </table>
+      <p>A simulação tem agentes próprios para os 8 partidos com programa nacional articulado. O CDS-PP integra a coligação AD e vota com o PSD. O JPP, sem programa nacional articulado e com peso aritmético residual, é mencionado pelo moderador quando relevante mas não tem agente próprio.</p>
+    </section>
+
+    <section class="text-section">
+      <h2>O que NÃO é</h2>
+      <p>Esta simulação não é previsão. Não pretende antecipar o que vai acontecer no Parlamento real, nem substituir o jornalismo político ou a análise especializada. As posições dos agentes são aproximações construídas a partir de fontes públicas e podem divergir das posições reais dos partidos, sobretudo em temas onde estes ainda não se pronunciaram com clareza.</p>
+      <p>A simulação não tem qualquer ligação com os partidos representados, com a Assembleia da República ou com qualquer instituição política. É um exercício cívico independente.</p>
+    </section>
+
+    <section class="text-section">
+      <h2>Limites</h2>
+      <p>Os agentes têm conhecimento factual limitado a um corte de treino e ao briefing fornecido para cada sessão. Podem cometer erros, fazer simplificações ou interpretar mal posições recentes. Cada sessão inclui uma comparação com a quinzenal real para que o leitor possa contrastar simulação e realidade.</p>
+    </section>
+
+    <section class="text-section">
+      <h2>Transparência</h2>
+      <p>Os prompts que definem cada agente partidário são públicos e podem ser consultados na <a href="/agentes">página dos agentes</a>. Qualquer pessoa pode ver o ficheiro markdown completo que define o "PSD" ou o "Chega" nesta simulação e julgar se a representação é justa.</p>
+      <p>Discordâncias substantivas com argumentos concretos são bem-vindas — escreve para <a href="mailto:contacto@governoai.pt">contacto@governoai.pt</a>. As posições dos agentes serão revistas com base em programa eleitoral, declarações verificáveis e histórico de votação.</p>
+    </section>
+
+    <section class="text-section">
+      <h2>Contacto</h2>
+      <p>Sugestões, críticas, propostas de tema e correções: <a href="mailto:contacto@governoai.pt">contacto@governoai.pt</a></p>
+    </section>
+  </article>
+</Base>
+
+<style>
+.text-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 3rem 2rem 6rem;
+}
+
+.page-header {
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.page-tag {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.page-header h1 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.text-section {
+  margin-bottom: 3rem;
+}
+
+.text-section h2 {
+  font-family: var(--serif);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.text-section p {
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+.text-section a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.composicao-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-family: var(--serif);
+}
+
+.composicao-table tr {
+  border-bottom: 1px solid var(--border);
+}
+
+.composicao-table tr:last-child {
+  border-top: 2px solid var(--text);
+  border-bottom: none;
+}
+
+.composicao-table td {
+  padding: 0.75rem 1rem 0.75rem 0;
+  font-size: 1rem;
+}
+
+.composicao-table td:nth-child(2) {
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  color: var(--accent);
+  font-weight: 600;
+  width: 80px;
+  text-align: right;
+}
+
+.composicao-table td:nth-child(3) {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+</style>

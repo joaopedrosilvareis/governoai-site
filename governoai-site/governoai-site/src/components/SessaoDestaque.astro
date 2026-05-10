@@ -1,0 +1,387 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  sessao: CollectionEntry<'sessoes'>;
+}
+
+const { sessao } = Astro.props;
+const data = sessao.data;
+
+const formatarData = (d: Date) => {
+  const meses = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+  return `${d.getDate()} ${meses[d.getMonth()]} ${d.getFullYear()}`;
+};
+
+const totalDeputados = data.posicoes?.reduce((sum, p) => sum + p.deputados, 0) ?? 0;
+---
+
+<article class="featured-card">
+  <div class="featured-header">
+    <div class="featured-meta">
+      <span><strong>#{String(data.numero).padStart(2, '0')}</strong> {formatarData(data.data)}</span>
+      <span>{data.tema}</span>
+      <span>{data.partidos.length} partidos · {totalDeputados} deputados</span>
+      <span class="reading-time">Leitura: 2 min · Sessão completa: 15 min</span>
+    </div>
+    <h2 class="featured-title">{data.titulo}</h2>
+    <p class="featured-summary">{data.sumario}</p>
+  </div>
+
+  {data.quick_facts && data.quick_facts.length > 0 && (
+    <div class="quick-context">
+      {data.quick_facts.map(fact => (
+        <div class="quick-context-item">
+          <div class="quick-label">{fact.label}</div>
+          <div class="quick-value">{fact.value}</div>
+        </div>
+      ))}
+    </div>
+  )}
+
+  {data.posicoes && data.posicoes.length > 0 && (
+    <div class="positions-snapshot">
+      <div class="snapshot-label">Posições em uma frase</div>
+      {data.posicoes.map(pos => (
+        <div class="snapshot-row">
+          <span class="party-pill">{pos.partido}<span class="pill-dep">{pos.deputados}</span></span>
+          <span class="snapshot-text">"{pos.frase}"</span>
+        </div>
+      ))}
+    </div>
+  )}
+
+  {data.cenarios && (
+    <div class="scenarios-grid">
+      <div class="scenario-card">
+        <div class="scenario-label">Cenário 1 · Provável</div>
+        <h3 class="scenario-title">{data.cenarios.provavel.titulo}</h3>
+        <div class="scenario-geometry">{data.cenarios.provavel.geometria}</div>
+        <p class="scenario-summary">{data.cenarios.provavel.sumario}</p>
+        {data.cenarios.provavel.chave && (
+          <div class="scenario-key">
+            <span class="key-label">Pivô</span>
+            <span class="key-value">{data.cenarios.provavel.chave}</span>
+          </div>
+        )}
+      </div>
+
+      <div class="scenario-card">
+        <div class="scenario-label">Cenário 2 · Máxima ambição</div>
+        <h3 class="scenario-title">{data.cenarios.ambicao.titulo}</h3>
+        <div class="scenario-geometry" style="color: var(--gold);">{data.cenarios.ambicao.geometria}</div>
+        <p class="scenario-summary">{data.cenarios.ambicao.sumario}</p>
+        {data.cenarios.ambicao.chave && (
+          <div class="scenario-key">
+            <span class="key-label">Bloqueio real</span>
+            <span class="key-value">{data.cenarios.ambicao.chave}</span>
+          </div>
+        )}
+      </div>
+
+      <div class="scenario-card">
+        <div class="scenario-label">Cenário 3 · Impasse</div>
+        <h3 class="scenario-title">{data.cenarios.impasse.titulo}</h3>
+        <div class="scenario-geometry" style="color: var(--gray);">{data.cenarios.impasse.geometria}</div>
+        <p class="scenario-summary">{data.cenarios.impasse.sumario}</p>
+        {data.cenarios.impasse.chave && (
+          <div class="scenario-key">
+            <span class="key-label">Quem ganha</span>
+            <span class="key-value">{data.cenarios.impasse.chave}</span>
+          </div>
+        )}
+      </div>
+    </div>
+  )}
+
+  {data.takeaway && (
+    <div class="takeaway">
+      <div class="takeaway-label">Em síntese</div>
+      <p class="takeaway-text" set:html={data.takeaway}></p>
+    </div>
+  )}
+
+  <div class="featured-footer">
+    <a href={`/sessoes/${sessao.id}`} class="read-link">Ler sessão completa com transcrição</a>
+    <div class="share-icons">Partilhar</div>
+  </div>
+</article>
+
+<style>
+.featured-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.featured-header {
+  padding: 2.5rem 3rem 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.featured-meta {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+}
+
+.featured-meta strong { color: var(--accent); font-weight: 500; }
+.featured-meta .reading-time { margin-left: auto; color: var(--text-faint); font-size: 0.7rem; }
+
+.featured-title {
+  font-family: var(--serif);
+  font-size: 2.25rem;
+  line-height: 1.15;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.featured-summary {
+  font-family: var(--serif);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 720px;
+}
+
+.quick-context {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: #FCFCF9;
+  border-bottom: 1px solid var(--border);
+}
+
+.quick-context-item {
+  padding: 1.25rem 1.5rem;
+  border-right: 1px solid var(--border);
+}
+
+.quick-context-item:last-child { border-right: none; }
+
+.quick-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  margin-bottom: 0.4rem;
+}
+
+.quick-value {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.positions-snapshot {
+  padding: 2rem 3rem;
+  border-bottom: 1px solid var(--border);
+  background: #FFFFFF;
+}
+
+.snapshot-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.snapshot-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 1.5rem;
+  align-items: baseline;
+  padding: 0.75rem 0;
+  border-bottom: 1px dotted var(--border);
+}
+
+.snapshot-row:last-child { border-bottom: none; }
+
+.party-pill {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.4rem 0.7rem;
+  background: #F2F2EE;
+  border: 1px solid var(--border-strong);
+  border-radius: 2px;
+  color: var(--text);
+  font-weight: 600;
+  width: fit-content;
+}
+
+.pill-dep {
+  color: var(--text-faint);
+  font-weight: 400;
+  font-size: 0.7rem;
+}
+
+.snapshot-text {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--text);
+  font-style: italic;
+}
+
+.scenarios-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.scenario-card {
+  padding: 2rem 2.5rem;
+  border-right: 1px solid var(--border);
+  transition: background 0.2s;
+}
+
+.scenario-card:last-child { border-right: none; }
+.scenario-card:hover { background: #FCFCF9; }
+
+.scenario-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-faint);
+  margin-bottom: 0.75rem;
+}
+
+.scenario-title {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.scenario-geometry {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.scenario-summary {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.scenario-key {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px dotted var(--border);
+}
+
+.key-label {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-faint);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.key-value {
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.4;
+  display: block;
+}
+
+.takeaway {
+  padding: 2.5rem 3rem;
+  background: linear-gradient(180deg, #FAFAF7 0%, #F5F5EE 100%);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.takeaway-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.takeaway-text {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  line-height: 1.65;
+  color: var(--text);
+  max-width: 800px;
+}
+
+.takeaway-text strong {
+  font-weight: 600;
+  border-bottom: 2px solid var(--accent-soft);
+  padding-bottom: 1px;
+}
+
+.featured-footer {
+  padding: 1.5rem 3rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #FCFCF9;
+}
+
+.read-link {
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: gap 0.2s;
+}
+
+.read-link:hover { gap: 0.75rem; }
+.read-link::after { content: '→'; font-family: var(--serif); }
+
+.share-icons {
+  display: flex;
+  gap: 1rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .featured-header { padding: 2rem 1.5rem; }
+  .quick-context { grid-template-columns: repeat(2, 1fr); }
+  .quick-context-item:nth-child(2) { border-right: none; }
+  .quick-context-item:nth-child(1), .quick-context-item:nth-child(2) { border-bottom: 1px solid var(--border); }
+  .positions-snapshot { padding: 1.5rem; }
+  .snapshot-row { grid-template-columns: 1fr; gap: 0.5rem; }
+  .scenarios-grid { grid-template-columns: 1fr; }
+  .scenario-card { border-right: none; border-bottom: 1px solid var(--border); padding: 1.5rem; }
+  .takeaway { padding: 1.5rem; }
+  .takeaway-text { font-size: 1.05rem; }
+  .featured-footer { padding: 1rem 1.5rem; flex-direction: column; gap: 1rem; align-items: flex-start; }
+}
+</style>

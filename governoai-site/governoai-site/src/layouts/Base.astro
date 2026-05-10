@@ -1,0 +1,91 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  activePage?: string;
+}
+
+const {
+  title = 'Governo AI — Simulações de governação',
+  description = 'A cada quinze dias, agentes de IA representam os partidos com assento parlamentar e debatem o tema da quinzenal seguinte.',
+  activePage = 'sessoes'
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+
+  <title>{title}</title>
+
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_PT" />
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="logo">
+        <span class="logo-mark"></span>
+        Governo AI
+      </a>
+      <ul class="nav-links">
+        <li><a href="/" class={activePage === 'sessoes' ? 'active' : ''}>Sessões</a></li>
+        <li><a href="/agentes" class={activePage === 'agentes' ? 'active' : ''}>Agentes</a></li>
+        <li><a href="/arquivo" class={activePage === 'arquivo' ? 'active' : ''}>Arquivo</a></li>
+        <li><a href="/sobre" class={activePage === 'sobre' ? 'active' : ''}>Sobre</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-about">
+        <strong>Governo AI</strong> é uma simulação independente, sem filiação partidária, que utiliza agentes de inteligência artificial para explorar geometrias parlamentares possíveis sobre os temas que dominam a agenda quinzenal.
+      </div>
+      <div class="footer-col">
+        <h4>Navegar</h4>
+        <ul>
+          <li><a href="/">Sessões</a></li>
+          <li><a href="/arquivo">Arquivo</a></li>
+          <li><a href="/agentes">Os agentes</a></li>
+          <li><a href="/sobre">Metodologia</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Participar</h4>
+        <ul>
+          <li><a href="/sugerir">Sugerir tema</a></li>
+          {/* Descomentar quando a conta de Instagram estiver criada:
+          <li><a href="https://instagram.com/governoai" target="_blank" rel="noopener">Instagram</a></li>
+          */}
+          <li><a href="mailto:contacto@governoai.pt">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© {new Date().getFullYear()} Governo AI</span>
+      <span>governoai.pt</span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,170 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const todasSessoes = await getCollection('sessoes');
+const sessoesOrdenadas = todasSessoes.sort((a, b) =>
+  b.data.data.valueOf() - a.data.data.valueOf()
+);
+
+const formatarData = (d: Date) => {
+  const meses = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+  return `${d.getDate()} ${meses[d.getMonth()]} ${d.getFullYear()}`;
+};
+
+const temas = [...new Set(sessoesOrdenadas.map(s => s.data.tema))];
+---
+
+<Base title="Arquivo — Governo AI" activePage="arquivo">
+  <section class="page-header-wrap">
+    <div class="page-header">
+      <div class="page-tag">Todas as sessões</div>
+      <h1>Arquivo</h1>
+      <p class="page-intro">{sessoesOrdenadas.length} {sessoesOrdenadas.length === 1 ? 'sessão publicada' : 'sessões publicadas'} desde maio de 2026.</p>
+    </div>
+  </section>
+
+  <section class="archive-page">
+    {sessoesOrdenadas.length > 0 ? (
+      <ul class="archive-list">
+        {sessoesOrdenadas.map(s => (
+          <li class="archive-item">
+            <a href={`/sessoes/${s.id}`} class="archive-link">
+              <div class="archive-num">#{String(s.data.numero).padStart(2, '0')}</div>
+              <div class="archive-date">{formatarData(s.data.data)}</div>
+              <div class="archive-content">
+                <h3>{s.data.titulo}</h3>
+                <p>{s.data.sumario}</p>
+              </div>
+              <div class="archive-tags">
+                <span class="tag">{s.data.tema}</span>
+                {s.data.desfecho === 'acordo-provavel' && <span class="tag outcome-acordo">Acordo</span>}
+                {s.data.desfecho === 'impasse' && <span class="tag outcome-impasse">Impasse</span>}
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p class="empty-state">Ainda não há sessões publicadas.</p>
+    )}
+  </section>
+</Base>
+
+<style>
+.page-header-wrap { border-bottom: 1px solid var(--border); }
+
+.page-header {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.page-tag {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.page-header h1 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.page-intro {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.archive-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 2rem 6rem;
+}
+
+.archive-list {
+  list-style: none;
+  border-top: 1px solid var(--border);
+}
+
+.archive-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.archive-link {
+  display: grid;
+  grid-template-columns: 60px 100px 1fr auto;
+  gap: 1.5rem;
+  padding: 1.75rem 0;
+  align-items: baseline;
+  transition: padding 0.2s;
+}
+
+.archive-link:hover { padding-left: 1rem; }
+
+.archive-num {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.archive-date {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.archive-content h3 {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.4rem;
+}
+
+.archive-content p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  max-width: 600px;
+}
+
+.archive-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+.tag {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.6rem;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: 2px;
+  color: var(--text-muted);
+}
+
+.tag.outcome-acordo { color: #2D5016; border-color: #C5D5B5; background: #F0F5EA; }
+.tag.outcome-impasse { color: #6B2C00; border-color: #E5C5A8; background: #FAEFE3; }
+
+.empty-state {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--text-muted);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .archive-link { grid-template-columns: 1fr; gap: 0.5rem; }
+}
+</style>

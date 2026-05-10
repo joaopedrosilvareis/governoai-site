@@ -1,0 +1,31 @@
+# Python (governoai-starter)
+**/venv/
+**/.venv/
+**/__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.egg-info/
+.eggs/
+
+# Secrets
+**/.env
+**/.env.txt
+
+# Node / Astro (governoai-site)
+**/node_modules/
+**/dist/
+**/.astro/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Arquivos duplicados (pastas já versionadas)
+*.zip
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
