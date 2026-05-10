@@ -1,8 +1,8 @@
-# governoai-site
+# Governo AI — site (Astro)
 
-Site público do projeto Governo AI (governoai.pt). Construído com Astro
-e alojado no Netlify. As sessões são ficheiros markdown em
-`src/content/sessoes/` que o Astro renderiza automaticamente.
+Repositório monorepo: **orquestrador Python** (`orchestrator.py`, `agents/`, `briefings/`, …) e **site Astro** (`src/`, `package.json`, …) na mesma raiz.
+
+Site público (governoai.pt). Construído com Astro e alojado no Netlify. As sessões são markdown em `src/content/sessoes/`.
 
 ## Pré-requisitos
 
@@ -17,8 +17,7 @@ node --version
 ## Setup local (5 minutos)
 
 ```bash
-# 1. Entra na pasta
-cd governoai-site
+# 1. Na raiz do repositório (esta pasta)
 
 # 2. Instala dependências
 npm install
@@ -36,7 +35,7 @@ Ctrl+C no terminal.
 ## Estrutura
 
 ```
-governoai-site/
+./
 ├── src/
 │   ├── content/sessoes/        # ← cada sessão é um .md aqui
 │   ├── pages/                  # rotas do site
@@ -64,7 +63,7 @@ governoai-site/
 2. Lê o `report.md` gerado em `simulations/.../`
 
 3. Cria um ficheiro novo em
-   `governoai-site/src/content/sessoes/2026-05-22-novo-tema.md`
+   `src/content/sessoes/2026-05-22-novo-tema.md`
 
 4. Copia a estrutura do exemplo `2026-05-08-reforma-laboral.md`,
    adaptando frontmatter e conteúdo
@@ -104,7 +103,7 @@ Usa markdown standard: `##`, tabelas, listas, **negrito**, *itálico*.
 
 1. Cria conta em https://netlify.com (login com GitHub)
 2. "Add new site" → "Import an existing project" → escolhe o
-   repositório `governoai-site`
+   este repositório
 3. Aceita as configurações (já estão no `netlify.toml`)
 4. Deploy automático
 

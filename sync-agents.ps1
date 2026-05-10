@@ -1,19 +1,19 @@
 # sync-agents.ps1 — Windows (PowerShell)
-# Copia prompts de governoai-starter/agents para src/content/agentes
+# Copia prompts de agents/ para src/content/agentes/
 #
-# Uso (na raiz do site):
+# Uso (na raiz do repositório Governo AI):
 #   .\sync-agents.ps1
-#   .\sync-agents.ps1 "C:\caminho\para\governoai-starter\governoai-starter"
+#   .\sync-agents.ps1 "C:\outro\caminho\para\pasta-com-agents"
 
 param(
-    [string]$StarterRoot = (Join-Path $PSScriptRoot "..\..\governoai-starter\governoai-starter")
+    [string]$StarterRoot = $PSScriptRoot
 )
 
 $origem = Join-Path $StarterRoot "agents"
 $dest = Join-Path $PSScriptRoot "src\content\agentes"
 
 if (-not (Test-Path $origem)) {
-    Write-Error "Nao encontrei: $origem`nUso: .\sync-agents.ps1 `"C:\...\governoai-starter\governoai-starter`""
+    Write-Error "Nao encontrei: $origem`nUso: .\sync-agents.ps1 (corre na raiz do repo, com pasta agents\)"
     exit 1
 }
 

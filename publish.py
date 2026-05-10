@@ -6,11 +6,11 @@ pelo orquestrador. Tens depois de preencher os campos do frontmatter
 manualmente (não dá para automatizar tudo — algumas decisões editoriais
 são tuas).
 
-Uso:
-    python publish.py 2026-05-22-novo-tema --site ../governoai-site
+Uso (na raiz do repositório, site e orquestrador na mesma pasta):
+    python publish.py 2026-05-22-novo-tema --site .
 
-Ou com o path absoluto do site:
-    python publish.py 2026-05-22-novo-tema --site /Users/joao/governoai-site
+Ou com path absoluto:
+    python publish.py 2026-05-22-novo-tema --site /Users/joao/Governo AI
 """
 
 import argparse
@@ -82,8 +82,8 @@ def main():
     )
     parser.add_argument(
         "--site",
-        default="../governoai-site",
-        help="Caminho para o site Astro (default: ../governoai-site)"
+        default=".",
+        help="Caminho para a raiz do site Astro (default: . , mesmo repositório)"
     )
     parser.add_argument(
         "--titulo",
