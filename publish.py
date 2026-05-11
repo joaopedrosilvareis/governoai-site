@@ -25,7 +25,7 @@ data: {data}
 numero: {numero}
 tema: "{tema}"
 sumario: "TODO: escreve aqui um resumo de 2 frases para a homepage"
-desfecho: acordo-provavel  # ou: impasse, maxima-ambicao
+desfecho: acordo-provavel  # ou: impasse, consenso
 partidos: [psd, ps, chega]  # ajustar conforme a sessão
 quinzenal_link: ""
 
@@ -54,11 +54,11 @@ cenarios:
     geometria: "PSD + PS = 147 dep."
     sumario: "TODO: 1-2 frases"
     chave: "TODO: pivô da decisão"
-  ambicao:
+  consenso:
     titulo: "Todos assinam"
     geometria: "230 dep. (hipotético)"
     sumario: "TODO: o que seria preciso"
-    chave: "TODO: bloqueio real"
+    chave: "TODO: moeda decisiva / troca entre dossiês"
   impasse:
     titulo: "TODO: título curto"
     geometria: "< 116 dep."

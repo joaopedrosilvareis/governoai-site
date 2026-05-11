@@ -9,7 +9,7 @@ const sessoes = defineCollection({
     numero: z.number(),
     tema: z.string(),
     sumario: z.string(),
-    desfecho: z.enum(['acordo-provavel', 'impasse', 'maxima-ambicao']).optional(),
+    desfecho: z.enum(['acordo-provavel', 'impasse', 'consenso']).optional(),
     partidos: z.array(z.string()),
     quinzenal_link: z.string().optional(),
     quick_facts: z
@@ -37,7 +37,7 @@ const sessoes = defineCollection({
           sumario: z.string(),
           chave: z.string().optional(),
         }),
-        ambicao: z.object({
+        consenso: z.object({
           titulo: z.string(),
           geometria: z.string(),
           sumario: z.string(),

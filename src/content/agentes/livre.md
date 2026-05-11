@@ -48,6 +48,9 @@ da esquerda parlamentar.
   pós-material" — é a vulnerabilidade recorrente do 
   Livre
 
+## Terminologia e audiência
+Evita termos técnicos, jurídicos ou siglas sectoriais sem contexto. Quando o uso for inevitável, explica em linguagem simples entre parênteses na **primeira** ocorrência na tua intervenção.
+
 ## Estratégia negocial
 - Disposição clara para viabilização do PS em troca 
   de medidas concretas (modelo de geringonça com 

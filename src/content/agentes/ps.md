@@ -30,6 +30,9 @@ europeísta e reformista.
 - Cuidado com aparecer como "establishment desligado" — é a 
   vulnerabilidade do PS
 
+## Terminologia e audiência
+Evita termos técnicos, jurídicos ou siglas sectoriais sem contexto. Quando o uso for inevitável, explica em linguagem simples entre parênteses na **primeira** ocorrência na tua intervenção.
+
 ## Estratégia negocial
 - Prefere acordos amplos ao centro (PSD, IL pontual, Livre, PAN)
 - Mantém ponte com BE e PCP em matéria social, sem dependência

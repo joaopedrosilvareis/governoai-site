@@ -1,53 +1,55 @@
-# Reforma Laboral — Pacote "Trabalho XXI"
+# Reforma Laboral "Trabalho XXI" — A negociação parlamentar que o Governo não fez com os parceiros sociais
 
 ## Contexto
-
-A 7 de maio de 2026, o Governo (AD) enviou para o Parlamento o pacote "Trabalho XXI" sem acordo na concertação social, com a UGT a rejeitar e a CGTP a marcar greve geral para 22 de maio. Com 91 deputados, a AD não tem maioria com nenhum aliado isolado e depende de PS ou Chega para fazer passar uma reforma com mais de cem alterações ao Código do Trabalho.
+A 7 de maio de 2026, a concertação social fechou sem acordo sobre o pacote "Trabalho XXI" — mais de 100 alterações ao Código do Trabalho — e o Governo enviou-o para a Assembleia da República no dia seguinte, com greve geral marcada pela CGTP para 22 de maio. O PSD tem 91 deputados e precisa de 116, o que obriga a escolher entre viabilização pelo PS ou pelo Chega.
 
 ## Posições iniciais
 
-| Partido | Deputados | Posição (1 frase) |
+| Partido | Deputados | Posição |
 |---|---|---|
-| PSD | 91 | Avança com pacote estrutural; outsourcing pós-despedimento como "coração da modernização", preferência negocial pelo PS. |
-| Chega | 60 | Condiciona voto à descida da idade da reforma para 65 anos; recusa outsourcing, aceita banco de horas com proteção da parentalidade. |
-| PS | 58 | Linha vermelha no outsourcing; abertura a abstenção mediante redação concreta e três contrapartidas (PMEs, plataformas, ACT). |
-| IL | 9 | Apoia liberalização mas exige TSU jovem e IRC a 19% — fora do pacote, transferidos para OE2027. |
-| Livre | 6 | Voto contra; pacote ignora plataformas, desconexão digital, semana de 4 dias e transição justa. |
-| PCP | 3 | Rejeição em bloco por inconstitucionalidade; remete para a greve geral de 22 de maio. |
-| PAN | 1 | Abstenção condicionada à inscrição do estatuto do cuidador informal no articulado. |
-| BE | 1 | Voto contra; exige Lei Riders, fim da caducidade da contratação coletiva, combate aos falsos recibos verdes. |
+| PSD | 91 | Defende arquitetura do pacote; abre portas em reintegração, cláusula de calamidade e outsourcing; banco de horas individual e agilização da ACT como "intocáveis". |
+| Chega | 60 | Exige proteção de amamentação/turnos parentais e idade da reforma aos 65 anos ligada ao OE2027; sem isso, chumba. |
+| PS | 58 | Três linhas vermelhas: banco de horas só por contratação coletiva, travão de 12 meses no outsourcing, reintegração com salvaguardas. |
+| IL | 9 | Exige componente fiscal (IRC 19%, IRS Jovem) e ACT vinculativa; banco de horas individual mantém-se. |
+| Livre | 6 | Viabilização condicionada a direito a desligar, semana de 4 dias-piloto e transição justa. |
+| PCP | 3 | Rejeição integral; aposta na greve de 22 de maio. |
+| PAN | 1 | Exige direito a desligar, licença alargada e avaliação de impacto na conciliação. |
+| BE | 1 | Rejeição integral; "capitulação com selo progressista". |
 
 ## Momento de viragem
-
-O ponto de inflexão ocorreu quando o PSD, em menos de 24 horas, transformou o que chamara "coração da modernização" numa "reformulação condicionada" — distinção entre fraude à lei e reorganização legítima. O PS converteu a linha vermelha em seis exigências hierarquizadas, e o PSD respondeu com "seis sins" por escrito, incluindo a fórmula crítica "função equivalente, definida como mesmo CAE principal e conteúdo funcional substancialmente idêntico". A partir desse momento, o Chega ficou aritmeticamente irrelevante para a generalidade, e a sessão passou de negociação a redação.
+A 17.ª intervenção: o PSD aceitou literalmente a redação do PS no banco de horas (contratação coletiva como regra, individual subsidiário), 9 meses de outsourcing como meio-termo e a inscrição da anti-retaliação e ónus invertido no diploma. Em troca pediu uma coisa apenas — viabilização "sem cláusula de escape". O PS respondeu vinculativamente que o compromisso abrange a votação final global, desde que a especialidade não desvirtue o acordado. Em duas falas, materializou-se a geometria de 156 deputados que existia desde o início mas que ninguém tinha ousado fechar.
 
 ## Cenário 1 — Acordo provável
+**Geometria: AD 91 + PS 58 + Livre 6 + PAN 1 = 156 deputados.** Margem de 40 sobre os 116 necessários.
 
-**Geometria**: PSD 91 a favor; PS 58, IL 9 e PAN 1 abstidos (68); Chega 60, Livre 6, PCP 3, BE 1 contra (70). Aprovado por 91 contra 70.
+- Banco de horas individual subsidiário apenas onde não exista IRCT aplicável.
+- Outsourcing pós-despedimento coletivo travado a 9 meses, com revisão aos 2 anos.
+- Reintegração à opção do trabalhador, com anti-retaliação e ónus invertido escritos.
+- Plataformas digitais com presunção de laboralidade (diretiva UE 2024); ACT vinculativa a 4 meses.
+- Compromissos para a especialidade: direito a desligar com sanção, licença de assistência alargada.
 
-**Conteúdo**:
-- Travão de 12 meses ao outsourcing para função equivalente (mesmo CAE), com presunção de fraude e ónus na empresa.
-- ACT com suspensão cautelar (decisão em 30 dias) e prazos vinculativos de 4 meses.
-- Opção do trabalhador entre reintegração e indemnização majorada no despedimento ilícito.
-- Banco de horas individual com salvaguardas e referência à contratação coletiva.
-- Presunção de laboralidade ilidível nas plataformas digitais; regime simplificado PME; estatuto do cuidador informal.
+**Cedências**: AD recua em três pontos estruturais; PS aceita fim da reintegração obrigatória pura. **Custo político**: AD perde Chega e IL para o OE2027 (outubro será tenso); PS expõe-se a acusações de "bloco central" de PCP e BE.
 
-**Cedências**: PSD perde a narrativa de reforma estrutural; PS assina politicamente uma reforma que dilui a reintegração obrigatória. **Custo político**: PSD exposto ao flanco direito no OE2027 (IL e Chega cobrarão); PS exposto à esquerda na rua de 22 de maio.
+## Cenário 2 — Consenso (todos assinam)
 
-## Cenário 2 — Máxima ambição (todos assinam)
+Construído por expansão do perímetro para diplomas paralelos vinculados.
 
-**Hipotético, não previsão.** Exigiria que o PSD aceitasse presunção inilidível no outsourcing e banco de horas obrigatoriamente referenciado a convenção coletiva, em troca de paz social escrita (desconvocação da greve). O PS votaria favoravelmente em troca da revogação da caducidade da contratação coletiva. O Chega abandonaria os 65 anos universais em troca de desgaste rápido alargado e reforma aos 40 descontos pré-18 com data certa no articulado. A IL aceitaria travão reforçado em troca do contrato único como piloto setorial. Livre, PCP, BE e PAN obteriam Lei Riders robusta, desconexão com sanções, fim dos falsos recibos verdes e estatuto do cuidador.
+- **AD**: cede para outsourcing a 12 meses (não 9) e cláusula de calamidade taxativa; ganha ACT a 4 meses sancionatórios, opção do trabalhador na reintegração, plataformas reguladas; ganha fora do tema legitimidade europeia e viabilização do OE2027 sem chantagem.
+- **Chega**: retira a idade da reforma do perímetro; ganha proteção da amamentação e turnos parentais inscrita, banco de horas com acordo revogável a 30 dias; ganha fora do tema grupo de trabalho parlamentar sobre carreiras longas com relatório vinculativo em janeiro 2027 e reforço orçamental das forças de segurança.
+- **PS**: cede reintegração obrigatória pura e aceita calamidade circunscrita; ganha contratação coletiva como regra, 12 meses no outsourcing, plataformas com presunção; ganha fora do tema compromisso de o Governo não negociar matérias laborais com Chega no OE2027.
+- **IL**: cede banco de horas individual como regra; ganha ACT sancionatória e revisão das plataformas aos 24 meses; ganha fora do tema diploma fiscal paralelo (IRC 19% em 3 anos, IRS Jovem) com calendário vinculado no OE2027.
+- **Livre**: cede reintegração obrigatória; ganha direito a desligar e plataformas; ganha fora do tema piloto de semana de 4 dias dotado em 10 M€ e cláusula de transição justa no PNEC.
+- **PCP**: abstém-se nos artigos com proteções repostas; ganha cláusula de calamidade taxativa, +200 inspetores ACT, salário mínimo extraordinário a 920 € em 2027 e debate parlamentar sobre caducidade da contratação coletiva.
+- **PAN**: ganha direito a desligar com sanção, licença de assistência alargada incluindo fim de vida (humano e animal), avaliação de impacto obrigatória.
+- **BE**: abstenção construtiva no diploma global com votação separada das cláusulas sensíveis; ganha comissão de inquérito à precariedade nas plataformas e audição obrigatória da CGTP no processo regulamentar.
 
-**Linhas vermelhas intransponíveis**: PSD não aceita 2,5 mil M€/ano de reforma universal; Chega não assina presunção de laboralidade nas plataformas sem perder eleitorado de estafetas e TVDE; PCP não assina nenhum pacote que mantenha banco de horas individual — esta última torna a unanimidade impossível neste momento político.
+**O que teria de mudar no contexto**: recomendação formal da Comissão Europeia exigindo transposição rápida da diretiva das plataformas (retira margem de adiamento à AD e argumento à IL) **e** mobilização social a 22 de maio suficientemente ampla para forçar acordo blindado ao centro, dando simultaneamente ao Chega cobertura para reivindicar concessões sociais sem perder narrativa anti-sistema.
 
 ## Cenário 3 — Impasse
-
-Materializa-se se o texto entregue a 11 de maio diluir a fórmula "função equivalente com mesmo CAE" ou enfraquecer o ónus da prova. O PS passa de abstenção a voto contra, somando-se aos 70 já comprometidos. Pacote chumba 91 contra 128. **Ganha politicamente o Chega**, que recupera centralidade ao apresentar-se como única alternativa de maioria à direita; **perde o PSD**, forçado a reabrir concertação ou a fundir o dossier no OE2027 com condições agravadas. O PS sai ambiguamente: travou a reforma mas sem narrativa de construção.
+A AD insiste em manter banco de horas individual como regra; PS endurece e recusa viabilizar; Chega exige calendarização escrita da reforma aos 65, a AD recusa. Pacote bloqueia na generalidade ou avança apenas com AD+Chega+IL (160) com o custo de uma calendarização que envenena o OE2027. **Ganha politicamente**: BE e PCP (narrativa de "bloco central denunciado" ou "Governo capturado pela extrema-direita"). **Perde**: AD (autoridade governativa), trabalhadores precários (status quo mantém-se), e a previsibilidade legislativa.
 
 ## Leitura política
-
-Sai mais forte o **PS**, que converteu uma posição minoritária em poder de redação efetivo e forçou seis cedências documentadas do Governo. Sai mais fraco o **Chega**, que apesar dos 60 deputados ficou aritmeticamente excluído por insistir numa exigência externa ao perímetro laboral. A **IL** perdeu este round mas inscreveu hipoteca pública sobre o OE2027. À esquerda do PS, **Livre, PCP e BE** ganham pureza programática mas pagam o preço de irrelevância na redação.
+O PS sai mais forte: travou o pacote regressivo sem assumir custo de bloqueio, e fixou a redação do banco de horas. A AD ganha um diploma aprovável mas perde o eixo direita e prepara um outono difícil. O Chega sai com narrativa intacta mas sem ganhos concretos — moeda guardada para o OE2027. À esquerda do PS, BE e PCP consolidam identidade de rua, ao preço de irrelevância no Diário da República.
 
 ## Comparação com o real
-
-Esta sessão é uma simulação. Os agentes representam os partidos com base nos seus programas e posicionamentos públicos, mas as posições específicas, redações propostas e compromissos verbalizados não correspondem a declarações reais dos seus dirigentes. A geometria parlamentar é factual; o desfecho é exploratório.
+Esta sessão é uma simulação. As posições atribuídas baseiam-se em programas e declarações públicas conhecidas à data, mas as falas, cedências e compromissos descritos não correspondem a negociações reais. Em particular, os números (deputados, custos, prazos) refletem o cenário fixado para a simulação, não decisões parlamentares ocorridas.

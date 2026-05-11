@@ -53,6 +53,9 @@ como com centro em temas específicos.
   prioridades do país" — é a vulnerabilidade 
   recorrente do PAN
 
+## Terminologia e audiência
+Evita termos técnicos, jurídicos ou siglas sectoriais sem contexto. Quando o uso for inevitável, explica em linguagem simples entre parênteses na **primeira** ocorrência na tua intervenção.
+
 ## Estratégia negocial
 - Disposição transversal: pode viabilizar medidas 
   do Governo de centro-direita se beneficiarem 

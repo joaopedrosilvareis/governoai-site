@@ -41,8 +41,8 @@ import anthropic
 
 MODEL = "claude-opus-4-7"
 MAX_TOKENS_AGENT = 600
-MAX_TOKENS_MODERATOR = 2000
-MAX_TOKENS_REPORT = 3000
+MAX_TOKENS_MODERATOR = 4000
+MAX_TOKENS_REPORT = 5000
 
 ALL_PARTIES = ["psd", "chega", "ps", "il", "livre", "pcp", "pan", "be"]
 
@@ -174,12 +174,17 @@ def call_moderator(context: str, transcript: list, action: str, parties: list) -
             "possível, regista impasse honestamente — não inventes consensos."
         ),
         "force_unanimity": (
-            "Modo FORCE_UNANIMITY. Independentemente da geometria parlamentar, descreve "
-            "agora um cenário HIPOTÉTICO onde TODOS os partidos presentes assinam. Para "
-            "cada partido, identifica: (a) cedência mais profunda face à posição inicial, "
-            "(b) o que receberia em troca, (c) condição-fronteira intransponível. Se algum "
-            "partido tem linha vermelha verdadeiramente intransponível, nomeia-o. "
-            "Sinaliza desde o início: 'Em cenário hipotético de unanimidade, seria preciso que...'"
+            "Modo FORCE_UNANIMITY (cenário de consenso). Missão: acordo concreto onde "
+            "TODOS os partidos presentes assinam; construtivo, não descritivo; expandes "
+            "o perímetro a outros dossiês se preciso.\n\n"
+            "ORDEM OBRIGATÓRIA: (1) Mapa partido-a-partido PRIMEIRO — para CADA um dos "
+            "8 partidos, três linhas concisas: Cede | Ganha no tema | Ganha fora do tema "
+            "(moeda de troca). Cobre todos antes de avançar; se faltar espaço, comprime "
+            "o passo 2, nunca o mapa. (2) Pacote integrado: 5-8 cláusulas concretas. "
+            "(3) O que torna possível: 1-2 frases sobre contexto político.\n\n"
+            "Começa SEMPRE com: 'Em cenário hipotético de consenso, o acordo seria o seguinte:'\n"
+            "PROIBIDO concluir com 'impossível', 'intransponível', 'inviável' ou "
+            "'linha vermelha intransponível' — identifica moeda de troca ou contexto que resolva."
         ),
         "report": (
             "Modo REPORT. Produz agora o relatório final desta sessão, em português, "
@@ -189,8 +194,11 @@ def call_moderator(context: str, transcript: list, action: str, parties: list) -
             "## Posições iniciais\nTabela markdown com colunas: Partido | Deputados | Posição (1 frase).\n\n"
             "## Momento de viragem\n1 parágrafo.\n\n"
             "## Cenário 1 — Acordo provável\nGeometria, descrição (3-5 pontos), cedências, custo político.\n\n"
-            "## Cenário 2 — Máxima ambição (todos assinam)\nMarcar como hipotético. "
-            "O que cada partido teria de ceder e receber. Linha vermelha intransponível se houver.\n\n"
+            "## Cenário 2 — Consenso (todos assinam)\nReproduz a postura construtiva "
+            "do FORCE_UNANIMITY. Para cada partido: o que cede, o que ganha (dentro e "
+            "fora do tema). NÃO termines com 'impossível' ou 'linhas vermelhas inviabilizam'. "
+            "Se há barreira, identifica o que teria de mudar no contexto político. "
+            "Este é o cenário mais distintivo da simulação — não o comprimas para caber.\n\n"
             "## Cenário 3 — Impasse\nDescrição, quem ganha politicamente, quem perde.\n\n"
             "## Leitura política\n2-3 frases sobre quem sai mais forte narrativamente.\n\n"
             "## Comparação com o real\nNota fixa de aviso sobre simulação."
@@ -279,8 +287,8 @@ def run_session(briefing_slug: str, parties: list = None, debate_rounds: int = 2
         transcript.append({"role": party, "content": final, "phase": "final_reaction"})
         print(f"   ✓ {PARTY_NAMES[party]}")
     
-    # FASE 6: Cenário de máxima ambição
-    print("→ Fase 6: Cenário de máxima ambição (force_unanimity)...")
+    # FASE 6: Cenário de consenso (unanimidade construtiva)
+    print("→ Fase 6: Cenário de consenso (force_unanimity)...")
     unanimity = call_moderator(context, transcript, "force_unanimity", parties)
     transcript.append({"role": "moderador", "content": unanimity, "phase": "force_unanimity"})
     
@@ -393,7 +401,7 @@ def main():
         print("\n" + "="*60)
         print("  Sessão pronta. Próximos passos:")
         print("  1. Lê o report.md e edita se necessário")
-        print("  2. Copia para o site: cp simulations/.../report.md governoai-site/src/content/sessoes/")
+        print("  2. Publica no site: atualiza src/content/sessoes/<slug>.md a partir do report.md (ou python publish.py <slug>)")
         print("  3. git add . && git commit -m 'Sessão #N' && git push")
         print("="*60 + "\n")
         return 0

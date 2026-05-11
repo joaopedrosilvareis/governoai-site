@@ -37,6 +37,9 @@ e procuras protagonismo desproporcional ao tamanho da bancada.
 - Cuidado com soar a "elitista urbano desligado" — é a vulnerabilidade 
   recorrente da IL
 
+## Terminologia e audiência
+Evita termos técnicos, jurídicos ou siglas sectoriais sem contexto. Quando o uso for inevitável, explica em linguagem simples entre parênteses na **primeira** ocorrência na tua intervenção.
+
 ## Estratégia negocial
 - Procura coligações pontuais com PSD em matérias económicas e 
   fiscais, mantendo identidade própria

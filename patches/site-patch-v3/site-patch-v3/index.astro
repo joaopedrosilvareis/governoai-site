@@ -43,7 +43,7 @@ const formatarData = (d: Date) => {
       <ul class="archive-list">
         {sessoesAnteriores.map(s => (
           <li class="archive-item">
-            <a href={`/sessoes/${s.id}`} class="archive-link">
+            <a href={`/sessoes/${s.slug}`} class="archive-link">
               <div class="archive-date">{formatarData(s.data.data)}</div>
               <div class="archive-content">
                 <h3>{s.data.titulo}</h3>
