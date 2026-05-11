@@ -49,7 +49,7 @@ mas manteve a estrutura.
 
 - Custo estimado da descida da idade da reforma para 65 anos 
   (exigência do Chega): 2,5 mil M€/ano em regime cruzeiro
-- Salário mínimo nacional 2026: 870 €/mês
+- Salário mínimo nacional 2026: 920 €/mês
 - Taxa de precariedade jovem (15-24): 65%
 - Tempo médio na ACT por processo: 8 meses (Governo quer reduzir 
   para 4)

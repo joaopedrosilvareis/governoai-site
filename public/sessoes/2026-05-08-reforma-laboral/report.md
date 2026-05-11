@@ -39,7 +39,7 @@ Construído por expansão do perímetro para diplomas paralelos vinculados.
 - **PS**: cede reintegração obrigatória pura e aceita calamidade circunscrita; ganha contratação coletiva como regra, 12 meses no outsourcing, plataformas com presunção; ganha fora do tema compromisso de o Governo não negociar matérias laborais com Chega no OE2027.
 - **IL**: cede banco de horas individual como regra; ganha ACT sancionatória e revisão das plataformas aos 24 meses; ganha fora do tema diploma fiscal paralelo (IRC 19% em 3 anos, IRS Jovem) com calendário vinculado no OE2027.
 - **Livre**: cede reintegração obrigatória; ganha direito a desligar e plataformas; ganha fora do tema piloto de semana de 4 dias dotado em 10 M€ e cláusula de transição justa no PNEC.
-- **PCP**: abstém-se nos artigos com proteções repostas; ganha cláusula de calamidade taxativa, +200 inspetores ACT, salário mínimo extraordinário a 920 € em 2027 e debate parlamentar sobre caducidade da contratação coletiva.
+- **PCP**: abstém-se nos artigos com proteções repostas; ganha cláusula de calamidade taxativa, +200 inspetores ACT, salário mínimo extraordinário a 1.000 € em 2027 e debate parlamentar sobre caducidade da contratação coletiva.
 - **PAN**: ganha direito a desligar com sanção, licença de assistência alargada incluindo fim de vida (humano e animal), avaliação de impacto obrigatória.
 - **BE**: abstenção construtiva no diploma global com votação separada das cláusulas sensíveis; ganha comissão de inquérito à precariedade nas plataformas e audição obrigatória da CGTP no processo regulamentar.
 
