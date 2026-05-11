@@ -4,3 +4,9 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+# Rotas antigas (patch v4)
+[[redirects]]
+  from = "/agentes"
+  to = "/partidos"
+  status = 301

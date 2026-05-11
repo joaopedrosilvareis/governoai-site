@@ -1,27 +1,27 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { getCollection, render } from 'astro:content';
+import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
   const sessoes = await getCollection('sessoes');
   return sessoes.map(sessao => ({
-    params: { slug: sessao.id },
+    params: { slug: sessao.slug },
     props: { sessao },
   }));
 }
 
 const { sessao } = Astro.props;
-const { Content } = await render(sessao);
+const { Content } = await sessao.render();
 const data = sessao.data;
-
-const slugId = sessao.id;
-const reportPath = `/sessoes/${slugId}/report.md`;
-const transcriptPath = `/sessoes/${slugId}/transcript.json`;
 
 const formatarData = (d: Date) => {
   const meses = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
   return `${d.getDate()} ${meses[d.getMonth()]} ${d.getFullYear()}`;
 };
+
+// Caminhos para os ficheiros raw publicados em public/sessoes/<slug>/
+const reportPath = `/sessoes/${sessao.slug}/report.md`;
+const transcriptPath = `/sessoes/${sessao.slug}/transcript.json`;
 ---
 
 <Base title={`${data.titulo} — Governo AI`} description={data.sumario}>
@@ -59,14 +59,14 @@ const formatarData = (d: Date) => {
           <div class="download-icon">json</div>
           <div class="download-text">
             <div class="download-title">Transcrição do debate</div>
-            <div class="download-desc">Todas as intervenções dos agentes de partido e do moderador, fase a fase, em JSON.</div>
+            <div class="download-desc">Todas as intervenções dos agentes e do moderador, fase a fase, em JSON.</div>
           </div>
         </a>
       </div>
     </aside>
 
     <div class="session-footer-disclaimer">
-      Esta é uma simulação em que cada partido é representado por um agente de IA, com base em programas, declarações públicas e histórico de votação. Os resultados não correspondem a posições oficiais nem preveem o desfecho real. {data.quinzenal_link && (
+      Esta é uma simulação com agentes de IA representando posições partidárias com base em programas, declarações públicas e histórico de votação. Os resultados não correspondem a posições oficiais nem preveem o desfecho real. {data.quinzenal_link && (
         <span>Para acompanhar a discussão real, ver <a href={data.quinzenal_link} target="_blank" rel="noopener">a quinzenal correspondente</a>.</span>
       )}
     </div>
@@ -213,7 +213,7 @@ const formatarData = (d: Date) => {
   color: var(--text-muted);
 }
 
-/* ============ DOWNLOADS (patch v4) ============ */
+/* ============ DOWNLOADS ============ */
 .downloads {
   margin-top: 4rem;
   padding-top: 2.5rem;

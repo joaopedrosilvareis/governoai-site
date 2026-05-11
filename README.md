@@ -41,7 +41,8 @@ Ctrl+C no terminal.
 │   ├── pages/                  # rotas do site
 │   │   ├── index.astro         # homepage
 │   │   ├── sobre.astro
-│   │   ├── agentes.astro
+│   │   ├── partidos.astro
+│   │   ├── agentes.astro   # redireciona /agentes → /partidos
 │   │   ├── arquivo.astro
 │   │   └── sessoes/[...slug].astro  # template de sessão
 │   ├── layouts/Base.astro      # layout comum

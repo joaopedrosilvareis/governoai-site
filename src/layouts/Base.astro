@@ -9,7 +9,7 @@ interface Props {
 
 const {
   title = 'Governo AI — Simulações de governação',
-  description = 'A cada quinze dias, agentes de IA representam os partidos com assento parlamentar e debatem o tema da quinzenal seguinte.',
+  description = 'A cada quinze dias, os partidos com assento parlamentar debatem o tema da quinzenal seguinte, com voz dada por modelos de IA.',
   activePage = 'sessoes'
 } = Astro.props;
 ---
@@ -51,7 +51,7 @@ const {
       </a>
       <ul class="nav-links">
         <li><a href="/" class={activePage === 'sessoes' ? 'active' : ''}>Sessões</a></li>
-        <li><a href="/agentes" class={activePage === 'agentes' ? 'active' : ''}>Agentes</a></li>
+        <li><a href="/partidos" class={activePage === 'partidos' ? 'active' : ''}>Partidos</a></li>
         <li><a href="/arquivo" class={activePage === 'arquivo' ? 'active' : ''}>Arquivo</a></li>
         <li><a href="/sobre" class={activePage === 'sobre' ? 'active' : ''}>Sobre</a></li>
       </ul>
@@ -65,14 +65,14 @@ const {
   <footer>
     <div class="footer-inner">
       <div class="footer-about">
-        <strong>Governo AI</strong> é uma simulação independente, sem filiação partidária, que utiliza agentes de inteligência artificial para explorar geometrias parlamentares possíveis sobre os temas que dominam a agenda quinzenal.
+        <strong>Governo AI</strong> é uma simulação independente, sem filiação partidária, que modela posições partidárias com IA para explorar geometrias parlamentares possíveis sobre os temas que dominam a agenda quinzenal.
       </div>
       <div class="footer-col">
         <h4>Navegar</h4>
         <ul>
           <li><a href="/">Sessões</a></li>
           <li><a href="/arquivo">Arquivo</a></li>
-          <li><a href="/agentes">Os agentes</a></li>
+          <li><a href="/partidos">Os partidos</a></li>
           <li><a href="/sobre">Metodologia</a></li>
         </ul>
       </div>

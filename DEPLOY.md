@@ -123,7 +123,7 @@ Funciona automaticamente. Espera 1-2 minutos.
 - [ ] https://www.governoai.pt redireciona para governoai.pt
 - [ ] Cadeado verde no browser (HTTPS)
 - [ ] A sessão de exemplo abre clicando em "Ler sessão completa"
-- [ ] Páginas Sobre, Agentes, Arquivo funcionam
+- [ ] Páginas Sobre, Partidos, Arquivo funcionam
 - [ ] Em mobile, layout não está partido
 
 ---
